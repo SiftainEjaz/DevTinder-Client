@@ -9,6 +9,7 @@ function Login() {
 
   const [emailId, setEmailId] = useState('siftain@gmail.com');
   const [password, setPassword] = useState('Siftain@1234');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,6 +30,7 @@ function Login() {
      }
      catch(error)
      {
+        setError(error?.response?.data || "Something went wrong");
         console.error(error);
      }
   }
@@ -58,8 +60,9 @@ function Login() {
             </fieldset>
 
           </div>
-
+          <p className='text-red-500'>{error}</p>
           <div className="card-actions justify-center">
+          
             <button className="btn btn-soft btn-info"
               onClick={handleLogin}>Login</button>
           </div>
