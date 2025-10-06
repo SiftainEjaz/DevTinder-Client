@@ -3,22 +3,24 @@ import React from 'react'
 function Usercard({user}) {
     const {firstName, lastName, age, gender ,about, photoUrl} = user;
     return (
-        <div>
+        <div className='flex-none w-96'>
             <div className="card bg-base-300 w-96 shadow-sm">
 
-                <figure>
+                <figure className='w-96 h-96 overflow-hidden'>
                     <img
                         src={photoUrl}
-                        alt="Profile Picture" />
+                        alt="Profile Picture" 
+                        className='w-full h-full object-cover'
+                    />
                 </figure>
 
                 <div className="card-body">
                     
                     <h2 className="card-title">{firstName + " " + lastName}</h2>
 
-                    {age && gender && <p>{age + " " + gender}</p>}
+                    {age ? age : ""} {gender ? gender : ""}
                     <p>{about}</p>
-
+                    
                     <div className="card-actions justify-center">
                         <button className="btn btn-error">Ignore</button>
                         <button className="btn btn-primary">Interested</button>

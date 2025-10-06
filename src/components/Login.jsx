@@ -31,7 +31,7 @@ function Login() {
      catch(error)
      {
         setError(error?.response?.data || "Something went wrong");
-        console.error(error);
+        // console.error(error);
      }
   }
 
