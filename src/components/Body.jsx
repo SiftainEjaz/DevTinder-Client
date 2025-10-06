@@ -21,7 +21,6 @@ function Body() {
         {withCredentials : true}
       )
 
-      console.log(res.data);
       dispatch(addUser(res.data));
     } 
     catch (error) {

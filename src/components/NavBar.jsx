@@ -1,6 +1,7 @@
-import {Link,Navigate, useNavigate} from 'react-router'
+import {Link, useNavigate} from 'react-router'
 import {useSelector, useDispatch} from 'react-redux';
 import {removeUser} from '../utils/userSlice.js';
+import {removeFeed} from '../utils/feedSlice.js';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
@@ -9,7 +10,6 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
-  // console.log(user);
   
   const handleLogout = async () => {
     try
@@ -19,6 +19,7 @@ function Navbar() {
         {},
         {withCredentials : true}
       )
+      dispatch(removeFeed());
       dispatch(removeUser());
       navigate("/login");
 
