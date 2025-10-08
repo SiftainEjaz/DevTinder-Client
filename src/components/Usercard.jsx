@@ -22,8 +22,8 @@ function Usercard({user}) {
                     <p>{about}</p>
                     
                     <div className="card-actions justify-center">
-                        <button className="btn btn-error">Ignore</button>
-                        <button className="btn btn-primary">Interested</button>
+                        <button className="btn btn-error rounded-2xl">Ignore</button>
+                        <button className="btn btn-primary rounded-2xl">Interested</button>
                     </div>
 
                 </div>

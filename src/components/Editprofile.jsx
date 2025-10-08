@@ -30,7 +30,6 @@ function Editprofile({ user }) {
             dispatch(addUser(res.data.data));
             setShowPopup(true);
             setTimeout(() => { setShowPopup(false) }, 3000);
-            console.log(res.data.data);
         }
         catch (error) {
             setError(error?.response?.data || "Something went wrong");
@@ -108,7 +107,7 @@ function Editprofile({ user }) {
                 </div>
                 <Usercard user={{ firstName, lastName, age, gender, about, photoUrl }} />
             </div>
-            { showPopup && (
+            {showPopup && (
                 <div
                     role="alert"
                     className="fixed top-5 left-1/2 transform -translate-x-1/2 z-50 alert alert-success"
