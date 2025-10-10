@@ -2,6 +2,7 @@ import {Link, useNavigate} from 'react-router'
 import {useSelector, useDispatch} from 'react-redux';
 import {removeUser} from '../utils/userSlice.js';
 import {removeFeed} from '../utils/feedSlice.js';
+import {removeRequests} from '../utils/requestSlice.js';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
@@ -21,6 +22,7 @@ function Navbar() {
       )
       dispatch(removeFeed());
       dispatch(removeUser());
+      dispatch(removeRequests());
       navigate("/login");
 
     }
@@ -34,6 +36,10 @@ function Navbar() {
     navigate('/connections');
   }
 
+  const handleRequests = () => {
+    navigate('/requests');
+  }
+
   return (
     <>
       <div className="navbar bg-base-300 shadow-sm">
@@ -42,9 +48,14 @@ function Navbar() {
              👩🏻‍❤️‍👨🏽 DevTinder</Link>
         </div>
         <div>
-          <button className='btn btn-wide bg-amber-200 text-black rounded-2xl' 
-            onClick={handleConnections}>Connections</button>
+          {user && <button className='btn btn-wide bg-blue-300 text-black rounded-2xl' 
+            onClick={handleRequests}>Pending Requests</button>}
         </div>
+        <div>
+          {user && <button className='btn btn-wide bg-amber-200 text-black rounded-2xl' 
+            onClick={handleConnections}>Connections</button>}
+        </div>
+        
         <div className="flex gap-2">
           {user && <div className="dropdown dropdown-end mx-5 flex ">
             <p className='px-4 flex items-center'>Welcome, {user.firstName}</p>
