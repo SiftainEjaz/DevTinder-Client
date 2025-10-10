@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {removeUser} from '../utils/userSlice.js';
 import {removeFeed} from '../utils/feedSlice.js';
 import {removeRequests} from '../utils/requestSlice.js';
+import { removeConnections } from '../utils/connectionSlice.js';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
@@ -22,6 +23,7 @@ function Navbar() {
       )
       dispatch(removeFeed());
       dispatch(removeUser());
+      dispatch(removeConnections());
       dispatch(removeRequests());
       navigate("/login");
 
