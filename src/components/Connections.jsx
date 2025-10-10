@@ -32,7 +32,7 @@ function Connections() {
 
   if (!connections || connections.length === 0) {
     return (
-      <div>
+      <div className='flex justify-center'>
         <h1 className='text-2xl text-amber-50'>No connections found!</h1>
       </div>
     )

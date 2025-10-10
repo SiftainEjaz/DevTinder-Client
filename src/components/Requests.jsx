@@ -29,8 +29,12 @@ function Requests() {
     }
   }
 
-  if (!requests || requests.length == 0) {
-    return <h2>No pending requests!</h2>
+  if (!requests || requests.length === 0) {
+    return (
+      <div className='flex justify-center'>
+        <h1 className='text-2xl text-amber-50'>No Pending Requests found!</h1>
+      </div>
+    )
   }
 
   return (
