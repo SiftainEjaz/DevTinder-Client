@@ -14,17 +14,26 @@ function Feed() {
         getFeedPage();
     },[]);
 
+    // if(feed.data.length==0)
+    // {
+    //     return (
+    //         <div className='flex justify-center'>
+    //             <h1 className='text-2xl text-amber-50'>You have reached end of the page!</h1>
+    //         </div>
+    //     )
+    // }
+
     const getFeedPage = async () => {
         try
         {
-            if(feed)
-                return;
+            // if(feed)
+            //     return;
 
             const res = await axios.get(
                 BASE_URL + "/user/feed",
                 {withCredentials : true}
             )
-            dispatch(addFeed(res.data));
+            dispatch(addFeed(res.data.data));
         }
         catch(error)
         {
@@ -33,9 +42,21 @@ function Feed() {
 
     }
 
+    if(!feed || feed.length == 0)
+    {
+        return (
+            <div className='flex justify-center'>
+                <h1 className='text-2xl text-amber-50'>You have reached the bottom of the page</h1>
+            </div>
+        )
+    }
+
     return (
         <div className='flex justify-center my-10'>
-        { feed && <Usercard user={feed.data[1]}/>}
+        { feed && <Usercard user={feed[0]}/>}
+        
+
+
         </div>
     )
 }

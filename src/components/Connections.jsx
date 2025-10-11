@@ -36,7 +36,7 @@ function Connections() {
         <h1 className='text-2xl text-amber-50'>No connections found!</h1>
       </div>
     )
-  }
+  } 
 
   return (
     <div className="my-10 pb-20 text-center">

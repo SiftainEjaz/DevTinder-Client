@@ -5,15 +5,24 @@ import { BASE_URL } from '../utils/constants';
 function EditPassword() {
 
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
     const handleUpdate = async () => {
-        const res = await axios.patch(
-            BASE_URL + "/profile/password",
-            {password},
-            {withCredentials : true}
-        )
+        try
+        {
+            
+            const res = await axios.patch(
+                BASE_URL + "/profile/password",
+                {password},
+                {withCredentials : true}
+            )
 
-        console.log(res);
+            console.log(res);
+        }
+        catch(error)
+        {
+            setError(error?.response?.data || "Something went wrong");
+        }
     }
 
     return (
@@ -30,7 +39,7 @@ function EditPassword() {
                         <input type="text" className="input" placeholder="Enter new password" 
                             value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </fieldset>
-
+                    <p className='text-red-500'>{error}</p>
                     <div className="card-actions justify-center">
                         <button className="btn btn-primary" onClick={handleUpdate}> Update </button>
                     </div>
