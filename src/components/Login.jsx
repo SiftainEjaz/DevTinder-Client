@@ -12,7 +12,6 @@ function Login() {
   const [emailId, setEmailId] = useState('');
   const [password, setPassword] = useState('');
   const [isLogin, setIsLogin] = useState(true);
-  const [showPopup, setShowPopup] = useState(false);
   const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,8 +28,6 @@ function Login() {
       )
 
       dispatch(addUser(res.data));
-      navigate("/");
-    
     }
     catch (error) {
       setError(error?.response?.data || "Something went wrong");
@@ -47,11 +44,6 @@ function Login() {
           {withCredentials : true}
         )
       
-      setShowPopup(true);
-      setTimeout(()=>{
-        setShowPopup(false);
-      },3000);
-      
     }
     catch(error)
     {
@@ -60,7 +52,6 @@ function Login() {
   }
 
   return (
-    <div>
     <div className='flex justify-center my-10'>
       <div className="card card-border bg-base-300 w-96">
         <div className="card-body">
@@ -115,8 +106,7 @@ function Login() {
           </p>
         </div>
       </div>
-    </div>
-  </div>    
+    </div>    
   )
 }
 

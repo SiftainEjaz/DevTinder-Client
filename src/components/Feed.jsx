@@ -14,14 +14,6 @@ function Feed() {
         getFeedPage();
     },[]);
 
-    // if(feed.data.length==0)
-    // {
-    //     return (
-    //         <div className='flex justify-center'>
-    //             <h1 className='text-2xl text-amber-50'>You have reached end of the page!</h1>
-    //         </div>
-    //     )
-    // }
 
     const getFeedPage = async () => {
         try

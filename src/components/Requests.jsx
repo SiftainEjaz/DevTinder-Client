@@ -21,9 +21,8 @@ function Requests() {
           {},
           {withCredentials : true}
         )
-        dispatch(updateRequests(res.data.data.fromUserId));
+        dispatch(updateRequests(_id));
         
-        console.log(res.data.data.fromUserId);
     } 
     catch (error) 
     {
