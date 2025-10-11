@@ -1,8 +1,9 @@
-import {Link, useNavigate} from 'react-router'
-import {useSelector, useDispatch} from 'react-redux';
-import {removeUser} from '../utils/userSlice.js';
-import {removeFeed} from '../utils/feedSlice.js';
-import {removeRequests} from '../utils/requestSlice.js';
+import PixelHeart from '../assets/PixelHeart.png';
+import { Link, useNavigate } from 'react-router'
+import { useSelector, useDispatch } from 'react-redux';
+import { removeUser } from '../utils/userSlice.js';
+import { removeFeed } from '../utils/feedSlice.js';
+import { removeRequests } from '../utils/requestSlice.js';
 import { removeConnections } from '../utils/connectionSlice.js';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
@@ -12,14 +13,13 @@ function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector(state => state.user);
-  
+
   const handleLogout = async () => {
-    try
-    {
+    try {
       await axios.post(
         BASE_URL + "/logout",
         {},
-        {withCredentials : true}
+        { withCredentials: true }
       )
       dispatch(removeFeed());
       dispatch(removeUser());
@@ -28,8 +28,7 @@ function Navbar() {
       navigate("/login");
 
     }
-    catch(error)
-    {
+    catch (error) {
       console.error(error);
     }
   }
@@ -45,19 +44,24 @@ function Navbar() {
   return (
     <>
       <div className="navbar bg-base-300 shadow-sm">
-        <div className="flex-1">
-          <Link to='/' className="btn btn-ghost text-2xl font-stretch-semi-expanded">
-             👩🏻‍❤️‍👨🏽 DevTinder</Link>
+        <div className="flex-1 flex items-center">
+          <Link to='/' className="btn btn-ghost flex items-center gap-3 px-2 py-1">
+            <img src={PixelHeart} alt="Logo" className="w-8 h-8 rounded-sm" />
+            <span className="text-2xl font-bold tracking-tight">PixelHeart</span>
+          </Link>
         </div>
+
+
+
         <div>
-          {user && <button className='btn btn-wide bg-blue-300 text-black rounded-2xl' 
+          {user && <button className='btn btn-wide bg-blue-300 text-black rounded-2xl'
             onClick={handleRequests}>Pending Requests</button>}
         </div>
         <div>
-          {user && <button className='btn btn-wide bg-amber-200 text-black rounded-2xl' 
+          {user && <button className='btn btn-wide bg-amber-200 text-black rounded-2xl'
             onClick={handleConnections}>Connections</button>}
         </div>
-        
+
         <div className="flex gap-2">
           {user && <div className="dropdown dropdown-end mx-5 flex ">
             <p className='px-4 flex items-center'>Welcome, {user.firstName}</p>

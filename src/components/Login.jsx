@@ -18,6 +18,7 @@ function Login() {
 
   const handleLogin = async function () {
     try {
+      setError("");
       const res = await axios.post(
         BASE_URL + "/login",
         {
@@ -28,10 +29,10 @@ function Login() {
       )
 
       dispatch(addUser(res.data));
+      navigate("/");
     }
     catch (error) {
       setError(error?.response?.data || "Something went wrong");
-      // console.error(error);
     }
   }
 
@@ -43,7 +44,9 @@ function Login() {
           {firstName, lastName, emailId, password},
           {withCredentials : true}
         )
-      
+
+      dispatch(addUser(res.data.data));
+      navigate("/profile");
     }
     catch(error)
     {
