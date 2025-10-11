@@ -76,7 +76,7 @@ function Navbar() {
                   Edit Profile
                 </Link>
               </li>
-              <li><a>Change Password</a></li>
+              <li><Link to='/editPassword'> Change Password </Link></li>
               <li><button onClick={handleLogout}>Logout</button></li>
             </ul>
           </div>}
