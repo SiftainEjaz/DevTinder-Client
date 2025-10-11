@@ -46,7 +46,7 @@ function Feed() {
     {
         return (
             <div className='flex justify-center'>
-                <h1 className='text-2xl text-amber-50'>You have reached the bottom of the page</h1>
+                <h2 className='text-xl my-5'>Reached bottom of the page!!</h2>
             </div>
         )
     }
@@ -54,9 +54,6 @@ function Feed() {
     return (
         <div className='flex justify-center my-10'>
         { feed && <Usercard user={feed[0]}/>}
-        
-
-
         </div>
     )
 }

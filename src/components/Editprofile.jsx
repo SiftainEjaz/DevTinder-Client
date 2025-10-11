@@ -83,17 +83,18 @@ function Editprofile({ user }) {
                                 <fieldset className="fieldset">
                                     <label className="fieldset-legend">Gender</label>
 
-                                    <input type="text" value={gender}
-                                        onChange={(e) => { setGender(e.target.value) }}
-                                        className="input" placeholder="Enter your gender" />
+                                    <select defaultValue="Select the gender"
+                                        value={gender} onChange={(e) => setGender(e.target.value)} className="select select-md">
+                                        <option disabled={true}>Select the Gender</option>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                    </select>
                                 </fieldset>
 
                                 <fieldset className="fieldset">
                                     <label className="fieldset-legend">About</label>
-
-                                    <input type="text" value={about}
-                                        onChange={(e) => { setAbout(e.target.value) }}
-                                        className="input" placeholder="Enter your about" />
+                                    
+                                    <textarea value={about} onChange={(e)=>setAbout(e.target.value)} className="textarea" placeholder="BIo"></textarea>
                                 </fieldset>
 
                             </div>
