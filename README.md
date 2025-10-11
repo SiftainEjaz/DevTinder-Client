@@ -1,5 +1,5 @@
-# DEVTINDER- Client
+# PixelHeart- Client
 
-This is the client side of the DevTinder Application
+This is the client side of the PixelHeart Application
 
 
