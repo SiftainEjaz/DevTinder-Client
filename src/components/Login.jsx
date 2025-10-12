@@ -91,7 +91,7 @@ function Login() {
             <fieldset className="fieldset">
               <label className="fieldset-legend">Password</label>
 
-              <input type="text" value={password}
+              <input type="password" value={password}
                 onChange={(e) => { setPassword(e.target.value) }}
                 className="input" placeholder="Enter your password" />
             </fieldset>

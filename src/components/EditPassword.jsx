@@ -32,11 +32,11 @@ function EditPassword() {
                     <h2 className="card-title text-2xl ">Change Password</h2>
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">Old Password</legend>
-                        <input type="text" className="input" placeholder="Enter old password" />
+                        <input type="password" className="input" placeholder="Enter old password" />
                     </fieldset>
                     <fieldset className="fieldset">
                         <legend className="fieldset-legend">New Password </legend>
-                        <input type="text" className="input" placeholder="Enter new password" 
+                        <input type="password" className="input" placeholder="Enter new password" 
                             value={password} onChange={(e) => setPassword(e.target.value)}/>
                     </fieldset>
                     <p className='text-red-500'>{error}</p>
