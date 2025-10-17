@@ -39,6 +39,7 @@ function Login() {
   const handleSignUp = async function () {
     try
     {
+      setError("");
       const res = await axios.post(
           BASE_URL + "/signup",
           {firstName, lastName, emailId, password},
@@ -50,7 +51,7 @@ function Login() {
     }
     catch(error)
     {
-      console.error(error);
+      setError(error?.response?.data || "Something went wrong");
     }
   }
 

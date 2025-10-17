@@ -3,6 +3,7 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { addConnections } from '../utils/connectionSlice';
+import { Link } from 'react-router';
 
 function Connections() {
 
@@ -28,6 +29,8 @@ function Connections() {
     }
   }
 
+  
+
 
   if (!connections || connections.length === 0) {
     return (
@@ -38,18 +41,14 @@ function Connections() {
   } 
 
   return (
-    <div className="my-10 pb-20 text-center">
-      <h1 className="text-2xl font-bold text-amber-50 mb-6">Connections</h1>
-
-      {connections.map((connection) => {
-
-        const {_id, firstName, about, lastName, photoUrl} = connection;
-        
-        return (
-          <div
-            key={_id}
-            className="flex items-center gap-4 m-4 p-4 rounded-lg bg-base-300 w-full md:w-1/2 mx-auto shadow-md hover:shadow-lg transition-all duration-200"
-          >
+  <div className="pb-32"> {/* Add enough bottom padding */}
+    {connections.map(({ _id, photoUrl, firstName, lastName, about }) => {
+      return (
+        <div
+          key={_id}
+          className="flex items-center justify-between gap-4 m-4 p-4 rounded-lg bg-base-300 w-full md:w-1/2 mx-auto shadow-md hover:shadow-lg transition-all duration-200"
+        >
+          <div className="flex items-center gap-4">
             <img
               alt="Profile pic"
               src={photoUrl}
@@ -60,10 +59,18 @@ function Connections() {
               <p className="text-sm opacity-80">{about}</p>
             </div>
           </div>
-        )
-      })}
-    </div>
-  );
+
+          <Link to={'/chat/' + _id}>
+            <button className="btn btn-soft btn-accent bg-base-300 text-white shadow-amber-100">Chat</button>
+          </Link>
+        </div>
+      );
+    })}
+  </div>
+);
+
+
+
 
 }
 
